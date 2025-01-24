@@ -13,5 +13,6 @@ export async function GET() {
     EMAIL_REPLY_TO: env.EMAIL_REPLY_TO || "",
     GOOGLE_CLIENT_ID: env.GOOGLE_CLIENT_ID || "",
     TEST_VAR_FROM_PROCESS_ENV: process.env.TEST_VAR || "",
+    NODE_ENV: process.env.NODE_ENV || "",
   });
 }
