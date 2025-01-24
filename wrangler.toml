@@ -1,5 +1,5 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "cloudflare-workers-nextjs-saas-template"
+name = "test-cloudflare-workers-nextjs-saas-template"
 main = ".open-next/worker.js"
 
 compatibility_date = "2024-09-26"
@@ -19,13 +19,13 @@ mode = "smart"
 
 [[d1_databases]]
 binding = "DATABASE"
-database_name = "cloudflare-workers-nextjs-saas"
-database_id = "94dd1269-a29c-4621-adff-1762d1af6926"
+database_name = "test-cloudflare-workers-nextjs-saas"
+database_id = "b57aa6bb-4e30-4e39-a60d-067f021bb7e7"
 migrations_dir = "src/db/migrations"
 
 [[kv_namespaces]]
 binding = "NEXT_CACHE_WORKERS_KV"
-id = "c6f2b077e0a34a84b3598558eb833055"
+id = "dec7e565761c4460ba94808df4be2e20"
 
 [vars]
 EMAIL_FROM = "hello@saas-stack.startup-studio.dev"
