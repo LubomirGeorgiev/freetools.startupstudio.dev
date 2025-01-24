@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getCloudflareContext } from '@opennextjs/cloudflare'
 
-
+// eslint-disable-next-line
 export async function GET() {
 
   const { env } = await getCloudflareContext()
