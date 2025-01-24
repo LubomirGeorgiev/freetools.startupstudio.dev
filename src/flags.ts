@@ -1,7 +1,6 @@
-import { cache } from "react"
 import "server-only"
 
-import { getCloudflareContext } from "@opennextjs/cloudflare"
+import { cache } from "react"
 
 export async function isGoogleSSOEnabled() {
 
@@ -9,8 +8,7 @@ export async function isGoogleSSOEnabled() {
 }
 
 export async function isTurnstileEnabled() {
-  const { env } = await getCloudflareContext()
-  return Boolean(env.TURNSTILE_SECRET_KEY)
+  return Boolean(process.env.TURNSTILE_SECRET_KEY)
 }
 
 export const getConfig = cache(async () => {
