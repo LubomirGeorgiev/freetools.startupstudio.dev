@@ -1,5 +1,5 @@
 {
-  "name": "test-cloudflare-workers-nextjs-saas",
+  "name": "freetools-startupstudio-dev",
   "version": "0.1.1",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "preview": "pnpm run opennext:build && wrangler dev",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
     "db:generate": "drizzle-kit generate --name",
-    "db:migrate:dev": "wrangler d1 migrations apply test-cloudflare-workers-nextjs-saas --local",
+    "db:migrate:dev": "wrangler d1 migrations apply freetools-startupstudio-dev --local",
     "email:dev": "email dev -d src/react-email -p 3001"
   },
   "dependencies": {
