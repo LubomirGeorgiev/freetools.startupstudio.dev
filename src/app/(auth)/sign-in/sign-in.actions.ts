@@ -14,7 +14,7 @@ export const signInAction = createServerAction()
   .handler(async ({ input }) => {
     return withRateLimit(
       async () => {
-        const db = await getDB();
+        const db = getDB();
 
         try {
           // Find user by email
@@ -22,7 +22,22 @@ export const signInAction = createServerAction()
             where: eq(userTable.email, input.email),
           });
 
-          if (!user || !user.passwordHash) {
+          if (!user) {
+            throw new ZSAError(
+              "NOT_AUTHORIZED",
+              "Invalid email or password"
+            );
+          }
+
+          // Check if user has only Google SSO
+          if (!user.passwordHash && user.googleAccountId) {
+            throw new ZSAError(
+              "FORBIDDEN",
+              "Please sign in with your Google account instead."
+            );
+          }
+
+          if (!user.passwordHash) {
             throw new ZSAError(
               "NOT_AUTHORIZED",
               "Invalid email or password"
@@ -43,7 +58,7 @@ export const signInAction = createServerAction()
           }
 
           // Create session
-          await createAndStoreSession(user.id)
+          await createAndStoreSession(user.id, "password")
 
           return { success: true };
         } catch (error) {

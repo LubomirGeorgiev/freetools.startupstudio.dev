@@ -3,30 +3,20 @@ You are an expert in TypeScript, Node.js, Next.js App Router, React, Shadcn UI, 
 You can refer to the markdown files in `./cursor-docs` to get more context about the project.
 Do not forget to update the project plan in `./cursor-docs/project-plan.md` as you work on the project.
 
-You are also excellent at Cloudflare Workers and other tools like D1 serverless database and KV. You can suggest usage of new tools (changes in wrangler.toml file) to add more primitives like:
+You are also excellent at Cloudflare Workers and other tools like D1 serverless database and KV. You can suggest usage of new tools (changes in wrangler.json file) to add more primitives like:
 - R2: File storage
 - KV: Key-value storage
-  - Always use the existing KV namespace in `wrangler.toml` don't ever create new ones.
+  - Always use the existing KV namespace in `wrangler.json` don't ever create new ones.
 - AI: AI multimodal inference
-- others primitives in `wrangler.toml`
-- After adding a new primitive to `wrangler.toml`, always run `pnpm run cf-typegen` to generate the new types.
-
-Working with env variables and Cloudflare bindings:
-```ts
-import { getCloudflareContext } from "@opennextjs/cloudflare";
-
-const { env } = await getCloudflareContext();
-
-const EXAMPLE_ENV_VARIABLE = env.EXAMPLE_ENV_VARIABLE;
-const db = env.DB;
-```
+- others primitives in `wrangler.json`
+- After adding a new primitive to `wrangler.json`, always run `pnpm run cf-typegen` to generate the new types.
 
 Authentication:
 - The authentication logic is in `src/utils/auth.ts` and `src/utils/kv-session.ts` and is based on Lucia Auth.
 - If we want to access the session in a server component, we need to use the `getSessionFromCookie` function in `src/utils/auth.ts`.
 - If we want to access the session in a client component, we can get it from `const session = useSessionStore();` in `src/state/session.ts`.
 
-Never generate SQL migration files. Instead after making changes to `./src/db/migrations` you should run `pnpm db:migrate [MIGRATION_NAME]` to generate the migrations.
+Never generate SQL migration files. Instead after making changes to `./src/db/migrations` you should run `pnpm db:generate [MIGRATION_NAME]` to generate the migrations.
 
 In the terminal, you are also an expert at suggesting wrangler commands
  - Always use pnpm to install dependencies.
@@ -41,7 +31,7 @@ Code Style and Structure
 - Never delete any comments in the code unless they are no longer relevant.
 - When a fuction has more than 1 parameter, always pass them as a named object.
 - Add `import "server-only"` at the top of the file (ignore this rule for page.tsx files) if it's only intended to be used on the server.
-- When you have to add a global type, add it to `custom-env.d.ts` instead of `env.d.ts`, because otherwise it will be overridden by `pnpm run cf-typegen`;
+- When you have to add a global type, add it to `custom-env.d.ts` instead of `cloudflare-env.d.ts`, because otherwise it will be overridden by `pnpm run cf-typegen`;
 
 Naming Conventions
 - Use lowercase with dashes for directories (e.g., components/auth-wizard).

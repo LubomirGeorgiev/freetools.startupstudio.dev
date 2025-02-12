@@ -15,18 +15,24 @@ import {
   deleteKVSession,
   getKV,
   getSessionKey,
-  type KVSession
+  type KVSession,
+  type CreateKVSessionParams
 } from "./kv-session";
 import { cache } from "react"
 import type { SessionValidationResult } from "@/types";
 import { SESSION_COOKIE_NAME } from "@/constants";
+import { ZSAError } from "zsa";
 
 const getSessionLength = () => {
   return ms("30d");
 }
 
+/**
+ * This file is based on https://lucia-auth.com
+ */
+
 export const getUserFromDB = async (userId: string) => {
-  const db = await getDB();
+  const db = getDB();
   return db.query.userTable.findFirst({
     where: eq(userTable.id, userId),
     columns: {
@@ -61,8 +67,16 @@ function decodeSessionCookie(cookie: string): { userId: string; token: string } 
   return { userId: parts[0], token: parts[1] };
 }
 
-// Based on https://lucia-auth.com/sessions/overview
-export async function createSession(token: string, userId: string): Promise<KVSession> {
+interface CreateSessionParams extends Pick<CreateKVSessionParams, "authenticationType" | "passkeyCredentialId" | "userId"> {
+  token: string;
+}
+
+export async function createSession({
+  token,
+  userId,
+  authenticationType,
+  passkeyCredentialId
+}: CreateSessionParams): Promise<KVSession> {
   const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
   const expiresAt = new Date(Date.now() + getSessionLength());
 
@@ -76,13 +90,24 @@ export async function createSession(token: string, userId: string): Promise<KVSe
     sessionId,
     userId,
     expiresAt,
-    user
+    user,
+    authenticationType,
+    passkeyCredentialId
   });
 }
 
-export async function createAndStoreSession(userId: string) {
+export async function createAndStoreSession(
+  userId: string,
+  authenticationType?: CreateKVSessionParams["authenticationType"],
+  passkeyCredentialId?: CreateKVSessionParams["passkeyCredentialId"]
+) {
   const sessionToken = generateSessionToken();
-  const session = await createSession(sessionToken, userId);
+  const session = await createSession({
+    token: sessionToken,
+    userId,
+    authenticationType,
+    passkeyCredentialId
+  });
   await setSessionTokenCookie({
     token: sessionToken,
     userId,
@@ -174,3 +199,130 @@ export const getSessionFromCookie = cache(async (): Promise<SessionValidationRes
 
   return validateSessionToken(decoded.token, decoded.userId);
 })
+
+/**
+ * Helper function to require a verified email for protected actions
+ * @throws {ZSAError} If user is not authenticated or email is not verified
+ * @returns The verified session
+ */
+export async function requireVerifiedEmail() {
+  const session = await getSessionFromCookie();
+
+  if (!session) {
+    throw new ZSAError("NOT_AUTHORIZED", "Not authenticated");
+  }
+
+  if (!session.user.emailVerified) {
+    throw new ZSAError("FORBIDDEN", "Please verify your email first");
+  }
+
+  return session;
+}
+
+interface DisposableEmailResponse {
+  disposable: string;
+}
+
+interface MailcheckResponse {
+  status: number;
+  email: string;
+  domain: string;
+  mx: boolean;
+  disposable: boolean;
+  public_domain: boolean;
+  relay_domain: boolean;
+  alias: boolean;
+  role_account: boolean;
+  did_you_mean: string | null;
+}
+
+type ValidatorResult = {
+  success: boolean;
+  isDisposable: boolean;
+};
+
+/**
+ * Checks if an email is disposable using debounce.io
+ */
+async function checkWithDebounce(email: string): Promise<ValidatorResult> {
+  try {
+    const response = await fetch(`https://disposable.debounce.io/?email=${encodeURIComponent(email)}`);
+
+    if (!response.ok) {
+      console.error("Debounce.io API error:", response.status);
+      return { success: false, isDisposable: false };
+    }
+
+    const data = await response.json() as DisposableEmailResponse;
+
+    return { success: true, isDisposable: data.disposable === "true" };
+  } catch (error) {
+    console.error("Failed to check disposable email with debounce.io:", error);
+    return { success: false, isDisposable: false };
+  }
+}
+
+/**
+ * Checks if an email is disposable using mailcheck.ai
+ */
+async function checkWithMailcheck(email: string): Promise<ValidatorResult> {
+  try {
+    const response = await fetch(`https://api.mailcheck.ai/email/${encodeURIComponent(email)}`);
+
+    if (!response.ok) {
+      console.error("Mailcheck.ai API error:", response.status);
+      return { success: false, isDisposable: false };
+    }
+
+    const data = await response.json() as MailcheckResponse;
+    return { success: true, isDisposable: data.disposable };
+  } catch (error) {
+    console.error("Failed to check disposable email with mailcheck.ai:", error);
+    return { success: false, isDisposable: false };
+  }
+}
+
+
+/**
+ * Checks if an email is allowed for sign up by verifying it's not a disposable email
+ * Uses multiple services in sequence for redundancy.
+ *
+ * @throws {ZSAError} If email is disposable or if all services fail
+ */
+export async function canSignUp({ email }: { email: string }): Promise<void> {
+  // Skip disposable email check in development
+  if (!isProd) {
+    return;
+  }
+
+  const validators = [
+    checkWithDebounce,
+    checkWithMailcheck,
+  ];
+
+  for (const validator of validators) {
+    const result = await validator(email);
+
+    // If the validator failed (network error, rate limit, etc), try the next one
+    if (!result.success) {
+      continue;
+    }
+
+    // If we got a successful response and it's disposable, reject the signup
+    if (result.isDisposable) {
+      throw new ZSAError(
+        "PRECONDITION_FAILED",
+        "Disposable email addresses are not allowed"
+      );
+    }
+
+    // If we got a successful response and it's not disposable, allow the signup
+    return;
+  }
+
+  // If all validators failed, we can't verify the email
+  throw new ZSAError(
+    "PRECONDITION_FAILED",
+    "Unable to verify email address at this time. Please try again later."
+  );
+}

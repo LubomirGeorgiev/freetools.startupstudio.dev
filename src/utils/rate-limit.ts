@@ -20,7 +20,6 @@ interface RateLimitResult {
 
 // Normalize an IP address for rate limiting
 // For IPv6, we use the /64 subnet to prevent rate limit bypassing
-// For IPv4, we use the /24 subnet
 function normalizeIP(ip: string): string {
   try {
     const addr = ipaddr.parse(ip);
@@ -35,12 +34,8 @@ function normalizeIP(ip: string): string {
       }
       return `${ipaddr.fromByteArray(bytes).toString()}/64`;
     } else {
-      // For IPv4, use /24 subnet (first three octets)
-      const ipv4 = addr as ipaddr.IPv4;
-      const octets = ipv4.octets;
-
-      octets[3] = 0; // Zero out the last octet
-      return `${ipaddr.fromByteArray(octets).toString()}/24`;
+      // For IPv4, return the address as-is without normalization
+      return addr.toString();
     }
   } catch {
     // If parsing fails, return the original IP
@@ -55,7 +50,7 @@ export async function checkRateLimit({
   key: string;
   options: RateLimitOptions;
 }): Promise<RateLimitResult> {
-  const { env } = await getCloudflareContext();
+  const { env } = getCloudflareContext();
   const now = Math.floor(Date.now() / 1000);
 
   // Normalize the key if it looks like an IP address

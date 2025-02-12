@@ -3,7 +3,6 @@ import "server-only"
 import { cache } from "react"
 
 export async function isGoogleSSOEnabled() {
-
   return Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET)
 }
 

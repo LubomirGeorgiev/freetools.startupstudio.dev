@@ -9,5 +9,4 @@ const googleSSOClient = new Google(
   `${SITE_URL}/sso/google/callback`
 )
 
-// eslint-disable-next-line
-export default googleSSOClient
+export default googleSSOClient;

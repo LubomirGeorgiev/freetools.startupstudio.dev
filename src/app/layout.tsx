@@ -56,8 +56,6 @@ export default async function BaseLayout({
   const session = await getSessionFromCookie();
   const config = await getConfig();
 
-  // TODO If the the email is not verified, we have to show a modal with a button to resend the verification email
-
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -73,7 +71,7 @@ export default async function BaseLayout({
             skipDelayDuration={50}
           >
             {children}
-            <Toaster richColors closeButton position="top-right" expand duration={2500} />
+            <Toaster richColors closeButton position="top-right" expand duration={7000} />
           </TooltipProvider>
         </ThemeProvider>
       </body>

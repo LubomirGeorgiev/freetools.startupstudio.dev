@@ -10,7 +10,6 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { getResetTokenKey } from "@/utils/auth-utils";
 import { validateTurnstileToken } from "@/utils/validateCaptcha";
 import { forgotPasswordSchema } from "@/schemas/forgot-password.schema";
-import { getSessionFromCookie } from "@/utils/auth";
 import { withRateLimit, RATE_LIMITS } from "@/utils/with-rate-limit";
 import { PASSWORD_RESET_TOKEN_EXPIRATION_SECONDS } from "@/constants";
 import { isTurnstileEnabled } from "@/flags";
@@ -35,17 +34,8 @@ export const forgotPasswordAction = createServerAction()
           }
         }
 
-        const session = await getSessionFromCookie()
-
-        if (session?.user && session?.user?.email !== input.email) {
-          throw new ZSAError(
-            "INPUT_PARSE_ERROR",
-            "You cannot reset the password for another user"
-          );
-        }
-
-        const db = await getDB();
-        const { env } = await getCloudflareContext();
+        const db = getDB();
+        const { env } = getCloudflareContext();
 
         try {
           // Find user by email
@@ -97,6 +87,6 @@ export const forgotPasswordAction = createServerAction()
           );
         }
       },
-      RATE_LIMITS.EMAIL
+      RATE_LIMITS.FORGOT_PASSWORD
     );
   });
