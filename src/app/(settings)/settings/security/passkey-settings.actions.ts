@@ -11,7 +11,7 @@ import { getDB } from "@/db";
 import { userTable, passKeyCredentialTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { createServerAction, ZSAError } from "zsa";
-import { getSessionFromCookie, requireVerifiedEmail, createAndStoreSession } from "@/utils/auth";
+import { requireVerifiedEmail, createAndStoreSession } from "@/utils/auth";
 import type { User } from "@/db/schema";
 import type { RegistrationResponseJSON, AuthenticationResponseJSON } from "@simplewebauthn/typescript-types";
 import { headers } from "next/headers";
@@ -102,11 +102,7 @@ const deletePasskeySchema = z.object({
 export const deletePasskeyAction = createServerAction()
   .input(deletePasskeySchema)
   .handler(async ({ input }) => {
-    const session = await getSessionFromCookie();
-
-    if (!session) {
-      throw new ZSAError("NOT_AUTHORIZED", "You must be logged in to delete passkeys");
-    }
+    const session = await requireVerifiedEmail();
 
     // Prevent deletion of the current passkey
     if (session.passkeyCredentialId === input.credentialId) {
