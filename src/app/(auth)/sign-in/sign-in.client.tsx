@@ -26,14 +26,34 @@ interface PasskeyAuthenticationButtonProps {
 }
 
 function PasskeyAuthenticationButton({ className, disabled, children }: PasskeyAuthenticationButtonProps) {
+  const { execute: generateOptions } = useServerAction(generateAuthenticationOptionsAction, {
+    onError: (error) => {
+      toast.dismiss();
+      toast.error(error.err?.message || "Failed to get authentication options");
+    },
+  });
+
+  const { execute: verifyAuthentication } = useServerAction(verifyAuthenticationAction, {
+    onError: (error) => {
+      toast.dismiss();
+      toast.error(error.err?.message || "Authentication failed");
+    },
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Authentication successful");
+      window.location.href = "/dashboard";
+    },
+  });
+
   const [isAuthenticating, setIsAuthenticating] = useState(false);
 
   const handleAuthenticate = async () => {
     try {
       setIsAuthenticating(true);
+      toast.loading("Authenticating with passkey...");
 
       // Get authentication options from the server
-      const [options] = await generateAuthenticationOptionsAction({});
+      const [options] = await generateOptions({});
 
       if (!options) {
         throw new Error("Failed to get authentication options");
@@ -45,16 +65,14 @@ function PasskeyAuthenticationButton({ className, disabled, children }: PasskeyA
       });
 
       // Send the response back to the server for verification
-      await verifyAuthenticationAction({
+      await verifyAuthentication({
         response: authenticationResponse,
         challenge: options.challenge,
       });
-
-      toast.success("Authentication successful");
-      window.location.href = "/dashboard"; // Redirect to dashboard after successful authentication
     } catch (error) {
       console.error("Passkey authentication error:", error);
-      toast.error((error as { err?: { message: string } })?.err?.message || "Authentication failed");
+      toast.dismiss();
+      toast.error("Authentication failed");
     } finally {
       setIsAuthenticating(false);
     }
@@ -94,7 +112,7 @@ const SignInPage = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center px-4 justify-center bg-background">
+    <div className="min-h-[90vh] flex flex-col items-center px-4 justify-center bg-background my-6 md:my-10">
       <div className="w-full max-w-md space-y-8 p-6 md:p-10 bg-card rounded-xl shadow-lg border border-border">
         <div className="text-center">
           <h2 className="mt-2 text-2xl md:text-3xl font-bold tracking-tight text-foreground">

@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 
 // eslint-disable-next-line import/no-cycle
 import { getUserFromDB } from "@/utils/auth";
-import { getIP } from "./getIP";
+import { getIP } from "./get-IP";
 
 const SESSION_PREFIX = "session:";
 
@@ -90,7 +90,6 @@ export async function getKVSession(sessionId: string, userId: string): Promise<K
   return JSON.parse(sessionStr) as KVSession;
 }
 
-// eslint-disable-next-line import/no-unused-modules
 export async function updateKVSession(sessionId: string, userId: string, expiresAt: Date): Promise<KVSession | null> {
   const session = await getKVSession(sessionId, userId);
   if (!session) return null;

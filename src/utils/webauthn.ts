@@ -5,11 +5,11 @@ import type {
   AuthenticationResponseJSON,
   AuthenticatorTransport,
   RegistrationResponseJSON,
-} from "@simplewebauthn/typescript-types";
+} from "@simplewebauthn/types";
 import { getDB } from "@/db";
 import { passKeyCredentialTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import isProd from "./isProd";
+import isProd from "./is-prod";
 import { SITE_NAME, SITE_DOMAIN, SITE_URL } from "@/constants";
 
 const rpName = SITE_NAME;

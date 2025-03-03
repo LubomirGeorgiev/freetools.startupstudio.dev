@@ -13,9 +13,9 @@ import { eq } from "drizzle-orm";
 import { createServerAction, ZSAError } from "zsa";
 import { requireVerifiedEmail, createAndStoreSession } from "@/utils/auth";
 import type { User } from "@/db/schema";
-import type { RegistrationResponseJSON, AuthenticationResponseJSON } from "@simplewebauthn/typescript-types";
+import type { RegistrationResponseJSON, AuthenticationResponseJSON } from "@simplewebauthn/types";
 import { headers } from "next/headers";
-import { getIP } from "@/utils/getIP";
+import { getIP } from "@/utils/get-IP";
 
 const generateRegistrationOptionsSchema = z.object({
   email: z.string().email(),
@@ -88,7 +88,7 @@ export const verifyRegistrationAction = createServerAction()
       userId: user.id,
       response: input.response,
       challenge: input.challenge,
-      userAgent: headers().get("user-agent"),
+      userAgent: (await headers()).get("user-agent"),
       ipAddress: await getIP(),
     });
     await createAndStoreSession(user.id, "passkey", input.response.id);
@@ -160,7 +160,7 @@ export const verifyAuthenticationAction = createServerAction()
     const { verification, credential } = await verifyPasskeyAuthentication(input.response, input.challenge);
 
     if (!verification.verified) {
-      throw new Error("Passkey authentication failed");
+      throw new ZSAError("FORBIDDEN", "Passkey authentication failed");
     }
 
     await createAndStoreSession(credential.userId, "passkey", input.response.id);
