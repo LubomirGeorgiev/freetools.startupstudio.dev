@@ -1,5 +1,5 @@
+import Layout from '@/components/layout/Layout';
 import { Footer } from '@/components/footer';
-import { Navigation } from '@/components/navigation';
 
 export default async function NavFooterLayout({
   children,
@@ -8,11 +8,10 @@ export default async function NavFooterLayout({
 }>) {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
-      <main className="flex-1">
+      <Layout>
         {children}
-      </main>
-      <Footer />
+        <Footer />
+      </Layout>
     </div>
   );
 }

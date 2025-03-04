@@ -3,6 +3,7 @@
 ## Tech Stack Overview
 
 ### Frontend
+
 - Next.js 15 (App Router)
 - React Server Components
 - TypeScript
@@ -13,6 +14,7 @@
 - Zustand for client state
 
 ### Backend (Cloudflare Workers with OpenNext)
+
 - DrizzleORM
 - Cloudflare D1 (SQLite Database)
 - Cloudflare KV (Session/Cache Storage)
@@ -20,6 +22,7 @@
 - OpenNext for SSR/Edge deployment
 
 ### Authentication & Authorization
+
 - Lucia Auth (User Management)
 - KV-based session management
 - CUID2 for ID generation
@@ -68,6 +71,7 @@
 ## Development Phases
 
 ### Phase 1: Setup & Infrastructure ✅
+
 - [x] Initialize Next.js project with TypeScript
 - [x] Configure Cloudflare Workers
 - [x] Set up D1 database with DrizzleORM
@@ -91,6 +95,7 @@
   - [x] Environment secrets management
 
 ### Phase 2: Core Features (In Progress)
+
 - [x] User management system
   - [x] User profile settings page
   - [x] Profile information update
@@ -119,6 +124,7 @@
 - [ ] File upload system with R2
 
 ### Phase 3: User Experience & Security
+
 - [x] Password reset flow
   - [x] Forgot password functionality
   - [x] Email verification
@@ -133,6 +139,7 @@
   - [x] Security headers
 
 ### Phase 4: Billing & Subscriptions
+
 - [ ] Stripe integration
 - [ ] Subscription plans
 - [ ] Usage tracking
@@ -141,6 +148,7 @@
 - [ ] Webhook handling
 
 ### Phase 5: Advanced Features
+
 - [ ] Real-time updates
 - [ ] Analytics dashboard
 - [ ] Team collaboration features
@@ -148,6 +156,7 @@
 - [ ] Audit logging
 
 ### Phase 6: Polish & Launch
+
 - [ ] Performance optimization
 - [ ] Security hardening
 - [ ] Documentation
@@ -157,6 +166,7 @@
 ## Key Features
 
 ### User Management
+
 - [x] Authentication (Lucia Auth)
 - [x] User profiles and settings
 - [x] Session management
@@ -164,18 +174,21 @@
 - [ ] Role-based access control
 
 ### Core Application
+
 - [x] Dashboard layout
 - [ ] Resource management
 - [ ] File uploads
 - [ ] API access
 
 ### Billing & Subscriptions
+
 - [ ] Multiple pricing tiers
 - [ ] Usage-based billing
 - [ ] Subscription management
 - [ ] Payment processing
 
 ### Developer Experience
+
 - [ ] API documentation
 - [ ] SDK/API clients
 - [ ] Webhooks
@@ -184,6 +197,7 @@
 ## Technical Considerations
 
 ### Performance
+
 - [x] Edge computing with Cloudflare Workers
 - [x] React Server Components
 - [x] Efficient data fetching
@@ -192,6 +206,7 @@
 - [x] Suspense for async operations to improve initial page load
 
 ### Security
+
 - [x] Authentication & authorization
 - [x] Session management
 - [ ] Data encryption
@@ -200,18 +215,21 @@
 - [x] Input validation
 
 ### Scalability
+
 - [x] Serverless architecture
 - [x] Edge caching
 - [ ] Database optimization
 - [ ] Asset delivery via R2
 
 ## Monitoring & Analytics
+
 - [ ] Error tracking
 - [ ] Performance monitoring
 - [ ] User analytics
 - [ ] Usage metrics
 
 ## Launch Checklist
+
 - [ ] Security audit
 - [ ] Performance testing
 - [ ] Documentation review
@@ -221,6 +239,7 @@
 - [ ] Backup procedures
 
 ## Future Enhancements
+
 - [ ] AI features integration
 - [ ] Advanced analytics
 - [ ] Mobile application
@@ -230,6 +249,7 @@
 ## Development Guidelines
 
 ### Code Style
+
 - Functional components with TypeScript
 - Server Components by default, 'use client' only when needed
 - Modular file structure with clear separation of concerns
@@ -241,19 +261,23 @@
 - Cloudflare bindings accessed through getCloudflareContext
 
 ### Testing Strategy
+
 - Unit tests (Vitest)
 - Integration tests
 - E2E tests (Playwright)
 - Performance testing
 
 ### Documentation
+
 - API documentation
 - User guides
 - Developer documentation
 - Architecture diagrams
 
 ### Database Schema
+
 Current Implementation:
+
 - User table with:
   - CUID2 based IDs
   - Timestamps (created/updated)
@@ -279,6 +303,7 @@ Current Implementation:
   - Rate limiting for auth endpoints
 
 ### Project Structure Updates
+
 - [x] Added (protected) layout for authenticated routes
 - [x] Implemented settings page with profile management
 - [x] Added session state management with Zustand

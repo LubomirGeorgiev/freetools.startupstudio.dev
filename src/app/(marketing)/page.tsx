@@ -1,7 +1,5 @@
 import { Metadata } from "next";
 import { Hero } from "@/components/landing/hero";
-import { Features } from "@/components/landing/features";
-import { FAQ } from "@/components/landing/faq";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/constants";
 
 export const metadata: Metadata = {
@@ -11,10 +9,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main>
+    <div className="container mx-auto">
       <Hero />
-      <Features />
-      <FAQ />
-    </main>
+      <Hero />
+    </div>
   );
 }

@@ -11,7 +11,7 @@ import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/constants";
 import { StartupStudioStickyBanner } from "@/components/startup-studio-sticky-banner";
 import { getSessionFromCookie } from "@/utils/auth";
 import { getConfig } from "@/flags";
-
+import Layout from "@/components/layout/Layout";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -85,7 +85,9 @@ export default function BaseLayout({
       <body className={inter.className}>
         <Suspense fallback={<ThemeProviderFallback>{children}</ThemeProviderFallback>}>
           <SessionProvider>
-            {children}
+            <Layout>
+              {children}
+            </Layout>
           </SessionProvider>
         </Suspense>
         <Toaster richColors closeButton position="top-right" expand duration={7000} />

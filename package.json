@@ -21,6 +21,7 @@
     "@heroicons/react": "^2.2.0",
     "@heroui/react": "2.6.12",
     "@hookform/resolvers": "^3.10.0",
+    "@iconify/react": "^5.2.0",
     "@icons-pack/react-simple-icons": "^11.2.0",
     "@marsidev/react-turnstile": "^1.1.0",
     "@oslojs/crypto": "^1.0.1",
