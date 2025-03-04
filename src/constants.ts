@@ -1,5 +1,5 @@
-export const SITE_NAME = "Test SaaS Template"
-export const SITE_DESCRIPTION = "A modern SaaS template built with Next.js 14 and Cloudflare Workers, designed for scalability and performance."
+export const SITE_NAME = "Free AI Tools to Boost your Productivity Instantly - Startup Studio Dev"
+export const SITE_DESCRIPTION = "Access 100+ free AI-powered tools to automate workflows, optimize processes, and transform operations. Expert-backed no-cost AI solutions for businesses. Start saving time today!"
 export const SITE_URL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://freetools.startupstudio.dev"
 export const GITHUB_REPO_URL = "https://github.com/LubomirGeorgiev/freetools.startupstudio.dev"
 
