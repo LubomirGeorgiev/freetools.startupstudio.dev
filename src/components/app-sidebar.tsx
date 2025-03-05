@@ -77,8 +77,8 @@ const data: Data = {
   ],
   navMain: [
     {
-      title: "Dashboard",
-      url: "/dashboard",
+      title: "Home",
+      url: "/",
       icon: SquareTerminal,
       isActive: true,
       // items: [

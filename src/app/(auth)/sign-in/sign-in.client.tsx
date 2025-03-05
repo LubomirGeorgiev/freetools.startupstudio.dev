@@ -41,7 +41,7 @@ function PasskeyAuthenticationButton({ className, disabled, children }: PasskeyA
     onSuccess: () => {
       toast.dismiss();
       toast.success("Authentication successful");
-      window.location.href = "/dashboard";
+      window.location.href = "/";
     },
   });
 

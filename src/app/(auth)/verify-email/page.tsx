@@ -72,7 +72,7 @@ export default async function VerifyEmailPage({
   }, RATE_LIMITS.EMAIL);
 
   if (success) {
-    redirect("/dashboard");
+    redirect("/");
   }
 
   return notFound();

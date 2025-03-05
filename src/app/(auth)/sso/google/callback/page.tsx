@@ -12,7 +12,7 @@ export default async function GoogleCallbackPage() {
   const session = await getSessionFromCookie();
 
   if (session) {
-    return redirect('/dashboard');
+    return redirect('/');
   }
 
   return <GoogleCallbackClientComponent />;

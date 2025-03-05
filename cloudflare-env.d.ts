@@ -5,7 +5,6 @@ interface CloudflareEnv {
 	EMAIL_FROM: "hello@saas-stack.startup-studio.dev";
 	EMAIL_FROM_NAME: "Startup Studio";
 	EMAIL_REPLY_TO: "startupstudio.dev@gmail.com";
-	NEXTJS_ENV: string;
 	DATABASE: D1Database;
 	ASSETS: Fetcher;
 }

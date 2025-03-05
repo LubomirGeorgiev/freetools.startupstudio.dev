@@ -45,7 +45,7 @@ export function Navigation() {
     { name: "Home", href: "/" },
     ...(session ? [
       { name: "Settings", href: "/settings" },
-      { name: "Dashboard", href: "/dashboard" },
+      { name: "Dashboard", href: "" },
     ] as NavItem[] : []),
   ]
 

@@ -42,7 +42,7 @@ const SignUpPage = () => {
     onSuccess: () => {
       toast.dismiss()
       toast.success("Account created successfully")
-      router.push("/dashboard")
+      router.push("/")
     }
   })
 
@@ -55,7 +55,7 @@ const SignUpPage = () => {
     onSuccess: () => {
       toast.dismiss()
       toast.success("Account created successfully")
-      router.push("/dashboard")
+      router.push("/")
     }
   })
 

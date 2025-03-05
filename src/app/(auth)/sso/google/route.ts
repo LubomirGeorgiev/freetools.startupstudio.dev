@@ -31,7 +31,7 @@ export async function GET() {
     const session = await getSessionFromCookie()
 
     if (session) {
-      return redirect('/dashboard')
+      return redirect('/')
     }
 
     let ssoRedirectUrl: null | URL = null

@@ -1,10 +1,10 @@
 "use client";
-import type {ModalProps} from "@heroui/react";
+import type { ModalProps } from "@heroui/react";
 
 import React from "react";
-import {TRANSITION_EASINGS} from "@heroui/framer-utils";
-import {Drawer, DrawerBody, DrawerContent} from "@heroui/react";
-import {cn} from "@heroui/react";
+import { TRANSITION_EASINGS } from "@heroui/framer-utils";
+import { Drawer, DrawerBody, DrawerContent } from "@heroui/react";
+import { cn } from "@heroui/react";
 
 const SidebarDrawer = React.forwardRef<
   HTMLDivElement,
@@ -86,6 +86,7 @@ const SidebarDrawer = React.forwardRef<
           radius="none"
           scrollBehavior="inside"
           style={{
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             "--sidebar-width": `${sidebarWidth}px`,
           }}

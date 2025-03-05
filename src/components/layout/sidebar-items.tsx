@@ -16,75 +16,41 @@ export const items: SidebarItem[] = [
     title: "Home",
   },
   {
-    key: "projects",
+    key: "About",
     href: "#",
     icon: "solar:widget-2-outline",
-    title: "Projects",
+    title: "About",
     endContent: (
       <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
     ),
   },
   {
-    key: "tasks",
+    key: "Contact",
     href: "#",
     icon: "solar:checklist-minimalistic-outline",
-    title: "Tasks",
+    title: "Contact",
     endContent: (
       <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
     ),
   },
   {
-    key: "team",
+    key: "Settings",
     href: "#",
     icon: "solar:users-group-two-rounded-outline",
-    title: "Team",
-  },
-  {
-    key: "tracker",
-    href: "#",
-    icon: "solar:sort-by-time-linear",
-    title: "Tracker",
-    endContent: (
-      <Chip size="sm" variant="flat">
-        New
-      </Chip>
-    ),
+    title: "Settings",
   },
   {
     key: "analytics",
     href: "#",
     icon: "solar:chart-outline",
     title: "Analytics",
-  },
-  {
-    key: "perks",
-    href: "#",
-    icon: "solar:gift-linear",
-    title: "Perks",
-    endContent: (
-      <Chip size="sm" variant="flat">
-        3
-      </Chip>
-    ),
-  },
-  {
-    key: "expenses",
-    href: "#",
-    icon: "solar:bill-list-outline",
-    title: "Expenses",
-  },
-  {
-    key: "settings",
-    href: "#",
-    icon: "solar:settings-outline",
-    title: "Settings",
-  },
+  }
 ];
 
 export const sectionItems: SidebarItem[] = [
   {
-    key: "overview",
-    title: "Overview",
+    key: "Menu",
+    title: "Menu",
     items: [
       {
         key: "home",
@@ -93,77 +59,53 @@ export const sectionItems: SidebarItem[] = [
         title: "Home",
       },
       {
-        key: "projects",
+        key: "About",
         href: "#",
         icon: "solar:widget-2-outline",
-        title: "Projects",
-        endContent: (
-          <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
-        ),
+        title: "About",
       },
       {
-        key: "tasks",
+        key: "Contact",
         href: "#",
         icon: "solar:checklist-minimalistic-outline",
-        title: "Tasks",
-        endContent: (
-          <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
-        ),
+        title: "Contact",
       },
       {
-        key: "team",
+        key: "Settings",
         href: "#",
         icon: "solar:users-group-two-rounded-outline",
-        title: "Team",
-      },
-      {
-        key: "tracker",
-        href: "#",
-        icon: "solar:sort-by-time-linear",
-        title: "Tracker",
-        endContent: (
-          <Chip size="sm" variant="flat">
-            New
-          </Chip>
-        ),
+        title: "Settings",
       },
     ],
   },
   {
-    key: "organization",
-    title: "Organization",
+    key: "industries",
+    title: "Industries",
     items: [
       {
-        key: "cap_table",
-        href: "#",
-        title: "Cap Table",
+        key: "Marketing",
+        href: "/marketing",
+        title: "Marketing",
         icon: "solar:pie-chart-2-outline",
-        items: [
-          {
-            key: "shareholders",
-            href: "#",
-            title: "Shareholders",
-          },
-          {
-            key: "note_holders",
-            href: "#",
-            title: "Note Holders",
-          },
-          {
-            key: "transactions_log",
-            href: "#",
-            title: "Transactions Log",
-          },
-        ],
+        endContent: (
+          <Chip size="sm" variant="flat">
+            1
+          </Chip>
+        ),
       },
       {
-        key: "analytics",
+        key: "Legal",
         href: "#",
         icon: "solar:chart-outline",
-        title: "Analytics",
+        title: "Legal",
+        endContent: (
+          <Chip size="sm" variant="flat">
+            1
+          </Chip>
+        ),
       },
       {
-        key: "perks",
+        key: "E-commerce",
         href: "/perks",
         icon: "solar:gift-linear",
         title: "Perks",
@@ -174,16 +116,26 @@ export const sectionItems: SidebarItem[] = [
         ),
       },
       {
-        key: "expenses",
-        href: "#",
+        key: "Healthcare",
+        href: "/healthcare",
         icon: "solar:bill-list-outline",
-        title: "Expenses",
+        title: "Healthcare",
+        endContent: (
+          <Chip size="sm" variant="flat">
+            2
+          </Chip>
+        ),
       },
       {
-        key: "settings",
-        href: "/settings",
+        key: "Finance",
+        href: "/finance",
         icon: "solar:settings-outline",
-        title: "Settings",
+        title: "Finance",
+        endContent: (
+          <Chip size="sm" variant="flat">
+            1
+          </Chip>
+        ),
       },
     ],
   },
@@ -193,7 +145,7 @@ export const sectionItemsWithTeams: SidebarItem[] = [
   ...sectionItems,
   {
     key: "your-teams",
-    title: "Your Teams",
+    title: "Games",
     items: [
       {
         key: "heroui",
@@ -219,8 +171,8 @@ export const sectionItemsWithTeams: SidebarItem[] = [
 
 export const brandItems: SidebarItem[] = [
   {
-    key: "overview",
-    title: "Overview",
+    key: "Menu",
+    title: "Menu",
     items: [
       {
         key: "home",
@@ -275,7 +227,7 @@ export const brandItems: SidebarItem[] = [
   },
   {
     key: "your-teams",
-    title: "Your Teams",
+    title: "Games",
     items: [
       {
         key: "heroui",
@@ -363,7 +315,7 @@ export const sectionLongList: SidebarItem[] = [
   },
   {
     key: "your-teams",
-    title: "Your Teams",
+    title: "Games",
     items: [
       {
         key: "heroui",
