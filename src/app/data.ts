@@ -1,4 +1,3 @@
-
 export interface Industry {
   id: string;
   slug: string;
@@ -88,7 +87,6 @@ export const games: Game[] = [
   },
 ];
 
-
 export const tools: Tool[] = [
   {
     id: "1",
@@ -104,6 +102,14 @@ export const tools: Tool[] = [
     name: "Post Generator",
     description: "Enter your idea and create, update or generate a post for your social media.",
     category: "Social Media",
+    imageUrl: "/image.jpg",
+  },
+  {
+    id: "3",
+    slug: "image-to-text",
+    name: "Image to Text",
+    description: "Convert images to text with AI-powered tools to improve quality and resolution.",
+    category: "Graphics & Design",
     imageUrl: "/image.jpg",
   },
 ];

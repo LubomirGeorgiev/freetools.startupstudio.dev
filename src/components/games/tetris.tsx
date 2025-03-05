@@ -341,6 +341,65 @@ export function TetrisGame() {
           <div className="flex flex-col items-center">
             {renderBoard()}
           </div>
+
+          {/* Touch controls for mobile */}
+          <div className="mt-4 grid grid-cols-3 gap-2 max-w-[200px] mx-auto">
+            <div></div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => rotatePiece()}
+              disabled={gameOver || isPaused}
+            >
+              ↑
+            </Button>
+            <div></div>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => movePiece(-1)}
+              disabled={gameOver || isPaused}
+            >
+              ←
+            </Button>
+            <div className="flex items-center justify-center">
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full"
+                onClick={() => {
+                  // Hard drop
+                  while (!checkCollision(currentPiece?.shape || [], { ...position, y: position.y + 1 })) {
+                    setPosition((prev) => ({ ...prev, y: prev.y + 1 }));
+                  }
+                  updateBoard();
+                }}
+                disabled={gameOver || isPaused}
+              >
+                ⏬
+              </Button>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => movePiece(1)}
+              disabled={gameOver || isPaused}
+            >
+              →
+            </Button>
+
+            <div></div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => dropPiece()}
+              disabled={gameOver || isPaused}
+            >
+              ↓
+            </Button>
+            <div></div>
+          </div>
         </Card>
 
         <div className="flex flex-col gap-4">

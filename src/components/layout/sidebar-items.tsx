@@ -17,7 +17,7 @@ export const items: SidebarItem[] = [
   },
   {
     key: "About",
-    href: "#",
+    href: "/about",
     icon: "solar:widget-2-outline",
     title: "About",
     endContent: (
@@ -25,26 +25,11 @@ export const items: SidebarItem[] = [
     ),
   },
   {
-    key: "Contact",
-    href: "#",
-    icon: "solar:checklist-minimalistic-outline",
-    title: "Contact",
-    endContent: (
-      <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
-    ),
-  },
-  {
     key: "Settings",
-    href: "#",
+    href: "/settings",
     icon: "solar:users-group-two-rounded-outline",
     title: "Settings",
   },
-  {
-    key: "analytics",
-    href: "#",
-    icon: "solar:chart-outline",
-    title: "Analytics",
-  }
 ];
 
 export const sectionItems: SidebarItem[] = [
@@ -60,19 +45,13 @@ export const sectionItems: SidebarItem[] = [
       },
       {
         key: "About",
-        href: "#",
+        href: "/about",
         icon: "solar:widget-2-outline",
         title: "About",
       },
       {
-        key: "Contact",
-        href: "#",
-        icon: "solar:checklist-minimalistic-outline",
-        title: "Contact",
-      },
-      {
         key: "Settings",
-        href: "#",
+        href: "/settings",
         icon: "solar:users-group-two-rounded-outline",
         title: "Settings",
       },
@@ -95,7 +74,7 @@ export const sectionItems: SidebarItem[] = [
       },
       {
         key: "Legal",
-        href: "#",
+        href: "/legal",
         icon: "solar:chart-outline",
         title: "Legal",
         endContent: (
@@ -106,9 +85,9 @@ export const sectionItems: SidebarItem[] = [
       },
       {
         key: "E-commerce",
-        href: "/perks",
+        href: "/e-commerce",
         icon: "solar:gift-linear",
-        title: "Perks",
+        title: "E-commerce",
         endContent: (
           <Chip size="sm" variant="flat">
             3
@@ -148,22 +127,16 @@ export const sectionItemsWithTeams: SidebarItem[] = [
     title: "Games",
     items: [
       {
-        key: "heroui",
-        href: "#",
-        title: "HeroUI",
-        startContent: <TeamAvatar name="Hero UI" />,
+        key: "snake",
+        href: "/games/snake",
+        title: "Snake",
+        startContent: <TeamAvatar name="Snake" />,
       },
       {
-        key: "tailwind-variants",
-        href: "#",
-        title: "Tailwind Variants",
-        startContent: <TeamAvatar name="Tailwind Variants" />,
-      },
-      {
-        key: "heroui-pro",
-        href: "#",
-        title: "HeroUI Pro",
-        startContent: <TeamAvatar name="HeroUI Pro" />,
+        key: "tetris",
+        href: "/games/tetris",
+        title: "Tetris",
+        startContent: <TeamAvatar name="Tetris" />,
       },
     ],
   },
@@ -176,15 +149,15 @@ export const brandItems: SidebarItem[] = [
     items: [
       {
         key: "home",
-        href: "#",
+        href: "/",
         icon: "solar:home-2-linear",
         title: "Home",
       },
       {
         key: "projects",
-        href: "#",
+        href: "/about",
         icon: "solar:widget-2-outline",
-        title: "Projects",
+        title: "About",
         endContent: (
           <Icon
             className="text-primary-foreground/60"
@@ -195,9 +168,9 @@ export const brandItems: SidebarItem[] = [
       },
       {
         key: "tasks",
-        href: "#",
+        href: "/settings",
         icon: "solar:checklist-minimalistic-outline",
-        title: "Tasks",
+        title: "Settings",
         endContent: (
           <Icon
             className="text-primary-foreground/60"
@@ -206,71 +179,40 @@ export const brandItems: SidebarItem[] = [
           />
         ),
       },
-      {
-        key: "team",
-        href: "#",
-        icon: "solar:users-group-two-rounded-outline",
-        title: "Team",
-      },
-      {
-        key: "tracker",
-        href: "#",
-        icon: "solar:sort-by-time-linear",
-        title: "Tracker",
-        endContent: (
-          <Chip className="bg-primary-foreground font-medium text-primary" size="sm" variant="flat">
-            New
-          </Chip>
-        ),
-      },
     ],
   },
   {
-    key: "your-teams",
+    key: "games",
     title: "Games",
     items: [
       {
-        key: "heroui",
-        href: "#",
-        title: "HeroUI",
+        key: "snake",
+        href: "/games/snake",
+        title: "Snake",
         startContent: (
           <TeamAvatar
             classNames={{
               base: "border-1 border-primary-foreground/20",
               name: "text-primary-foreground/80",
             }}
-            name="Hero UI"
+            name="Snake"
           />
         ),
       },
       {
-        key: "tailwind-variants",
-        href: "#",
-        title: "Tailwind Variants",
+        key: "tetris",
+        href: "/games/tetris",
+        title: "Tetris",
         startContent: (
           <TeamAvatar
             classNames={{
               base: "border-1 border-primary-foreground/20",
               name: "text-primary-foreground/80",
             }}
-            name="Tailwind Variants"
+            name="Tetris"
           />
         ),
-      },
-      {
-        key: "heroui-pro",
-        href: "#",
-        title: "HeroUI Pro",
-        startContent: (
-          <TeamAvatar
-            classNames={{
-              base: "border-1 border-primary-foreground/20",
-              name: "text-primary-foreground/80",
-            }}
-            name="HeroUI Pro"
-          />
-        ),
-      },
+      }
     ],
   },
 ];
@@ -318,23 +260,17 @@ export const sectionLongList: SidebarItem[] = [
     title: "Games",
     items: [
       {
-        key: "heroui",
-        href: "#",
-        title: "HeroUI",
-        startContent: <TeamAvatar name="Hero UI" />,
+        key: "snake",
+        href: "/games/snake",
+        title: "Snake",
+        startContent: <TeamAvatar name="Snake" />,
       },
       {
-        key: "tailwind-variants",
-        href: "#",
-        title: "Tailwind Variants",
-        startContent: <TeamAvatar name="Tailwind Variants" />,
-      },
-      {
-        key: "heroui-pro",
-        href: "#",
-        title: "HeroUI Pro",
-        startContent: <TeamAvatar name="HeroUI Pro" />,
-      },
+        key: "tetris",
+        href: "/games/tetris",
+        title: "Tetris",
+        startContent: <TeamAvatar name="Tetris" />,
+      }
     ],
   },
 ];
@@ -342,33 +278,33 @@ export const sectionLongList: SidebarItem[] = [
 export const sectionNestedItems: SidebarItem[] = [
   {
     key: "home",
-    href: "#",
+    href: "/",
     icon: "solar:home-2-linear",
     title: "Home",
   },
   {
     key: "projects",
-    href: "#",
+    href: "/about",
     icon: "solar:widget-2-outline",
-    title: "Projects",
+    title: "About",
     endContent: (
       <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
     ),
   },
   {
     key: "tasks",
-    href: "#",
+    href: "/settings",
     icon: "solar:checklist-minimalistic-outline",
-    title: "Tasks",
+    title: "Settings",
     endContent: (
       <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
     ),
   },
   {
     key: "team",
-    href: "#",
+    href: "/",
     icon: "solar:users-group-two-rounded-outline",
-    title: "Team",
+    title: "Home",
   },
   {
     key: "tracker",

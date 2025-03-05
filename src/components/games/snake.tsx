@@ -297,6 +297,49 @@ export function SnakeGame() {
                     <div className="flex flex-col items-center">
                         {renderGrid()}
                     </div>
+
+                    {/* Touch controls for mobile - moved below the game board */}
+                    <div className="mt-4 grid grid-cols-3 gap-2 max-w-[200px] mx-auto">
+                        <div></div>
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleDirectionClick(Direction.UP)}
+                            disabled={gameOver || isPaused}
+                        >
+                            ↑
+                        </Button>
+                        <div></div>
+
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleDirectionClick(Direction.LEFT)}
+                            disabled={gameOver || isPaused}
+                        >
+                            ←
+                        </Button>
+                        <div></div>
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleDirectionClick(Direction.RIGHT)}
+                            disabled={gameOver || isPaused}
+                        >
+                            →
+                        </Button>
+
+                        <div></div>
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleDirectionClick(Direction.DOWN)}
+                            disabled={gameOver || isPaused}
+                        >
+                            ↓
+                        </Button>
+                        <div></div>
+                    </div>
                 </Card>
 
                 <div className="flex flex-col gap-4">
@@ -314,49 +357,6 @@ export function SnakeGame() {
                         <div className="space-y-2 text-sm">
                             <p>Arrow Keys: Change direction</p>
                             <p>P: Pause/Resume</p>
-                        </div>
-
-                        {/* Touch controls for mobile */}
-                        <div className="mt-4 grid grid-cols-3 gap-2">
-                            <div></div>
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => handleDirectionClick(Direction.UP)}
-                                disabled={gameOver || isPaused}
-                            >
-                                ↑
-                            </Button>
-                            <div></div>
-
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => handleDirectionClick(Direction.LEFT)}
-                                disabled={gameOver || isPaused}
-                            >
-                                ←
-                            </Button>
-                            <div></div>
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => handleDirectionClick(Direction.RIGHT)}
-                                disabled={gameOver || isPaused}
-                            >
-                                →
-                            </Button>
-
-                            <div></div>
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => handleDirectionClick(Direction.DOWN)}
-                                disabled={gameOver || isPaused}
-                            >
-                                ↓
-                            </Button>
-                            <div></div>
                         </div>
                     </Card>
 
