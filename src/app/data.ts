@@ -12,7 +12,7 @@ export interface Tool {
   slug: string;
   name: string;
   description: string;
-  category: string;
+  industries: string[];
   imageUrl: string;
 }
 
@@ -90,26 +90,26 @@ export const games: Game[] = [
 export const tools: Tool[] = [
   {
     id: "1",
-    slug: "audio-summerizer",
-    name: "Audio Summerizer",
+    slug: "audio-summarizer",
+    name: "Audio Summarizer",
+    industries: ["Legal"],
     description: "Upload your audio and get a summary of the content.",
-    category: "Content Creation",
     imageUrl: "/image.jpg",
   },
   {
     id: "2",
     slug: "post-generator",
     name: "Post Generator",
+    industries: ["Marketing"],
     description: "Enter your idea and create, update or generate a post for your social media.",
-    category: "Social Media",
     imageUrl: "/image.jpg",
   },
   {
     id: "3",
     slug: "image-to-text",
     name: "Image to Text",
+    industries: ["Graphic Design"],
     description: "Convert images to text with AI-powered tools to improve quality and resolution.",
-    category: "Graphics & Design",
     imageUrl: "/image.jpg",
   },
 ];
