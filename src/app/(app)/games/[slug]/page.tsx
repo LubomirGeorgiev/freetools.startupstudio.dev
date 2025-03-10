@@ -29,12 +29,13 @@ export async function generateMetadata({
   };
 }
 
-export default function GameDetailPage({
+export default async function GameDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const game = getGameBySlug(params.slug);
+  const { slug } = await params;
+  const game = getGameBySlug(slug);
 
   if (!game) {
     notFound();

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
 import { tools } from "@/app/data"
 import { Icon } from "@iconify/react"
@@ -32,17 +32,17 @@ const carouselItems = lastThreeTools.map((tool, index) => ({
 export default function HeroCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setActiveIndex((current) => (current === carouselItems.length - 1 ? 0 : current + 1))
-  }
+  }, [])
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setActiveIndex((current) => (current === 0 ? carouselItems.length - 1 : current - 1))
-  }
+  }, [])
 
-  const goToSlide = (index: number) => {
+  const goToSlide = useCallback((index: number) => {
     setActiveIndex(index)
-  }
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {

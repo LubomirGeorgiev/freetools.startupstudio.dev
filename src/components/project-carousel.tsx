@@ -48,7 +48,7 @@ export function ProjectCarousel({ tools }: ToolCarouselProps) {
             className="flex transition-transform duration-300 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * (isMobile ? 66.66 : 100)}%)` }}
           >
-            {tools.map((tool, index) => (
+            {tools.map((tool) => (
               <div key={tool.slug} className={`w-full md:w-1/3 ${isMobile ? 'w-2/3' : ''} flex-shrink-0 px-2`}>
 
                 <ToolCard slug={tool.slug} name={tool.name} description={tool.description} icon={tool.icon} />

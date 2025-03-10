@@ -18,23 +18,29 @@ export const items: SidebarItem[] = [
   {
     key: "tools",
     href: "/tools",
-    icon: "hugeicons:ai-magic",
+    icon: "vscode-icons:folder-type-tools",
     title: "Tools",
   },
   {
     key: "games",
     href: "/games",
-    icon: "solar:gamepad-outline",
+    icon: "fluent-emoji:video-game",
     title: "Games",
   },
   {
     key: "About",
     href: "/about",
-    icon: "solar:widget-2-outline",
+    icon: "flat-color-icons:about",
     title: "About",
     endContent: (
       <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
     ),
+  },
+  {
+    key: "changelog",
+    href: "/changelog",
+    icon: "fluent-color:history-16",
+    title: "Changelog",
   },
   {
     key: "Settings",
@@ -52,31 +58,37 @@ export const sectionItems: SidebarItem[] = [
       {
         key: "home",
         href: "/",
-        icon: "solar:home-2-linear",
+        icon: "fluent-color:home-24",
         title: "Home",
       },
       {
         key: "tools",
         href: "/tools",
-        icon: "hugeicons:ai-magic",
+        icon: "vscode-icons:folder-type-tools",
         title: "Tools",
       },
       {
         key: "games",
         href: "/games",
-        icon: "solar:gamepad-outline",
+        icon: "fluent-emoji:video-game",
         title: "Games",
       },
       {
         key: "About",
         href: "/about",
-        icon: "solar:widget-2-outline",
+        icon: "flat-color-icons:about",
         title: "About",
+      },
+      {
+        key: "changelog",
+        href: "/changelog",
+        icon: "fluent-color:history-16",
+        title: "Changelog",
       },
       {
         key: "Settings",
         href: "/settings",
-        icon: "solar:settings-outline",
+        icon: "fluent-color:settings-28",
         title: "Settings",
       },
     ],
@@ -174,7 +186,7 @@ export const brandItems: SidebarItem[] = [
       {
         key: "home",
         href: "/",
-        icon: "solar:home-2-linear",
+        icon: "fluent-color:home-24",
         title: "Home",
       },
       {
@@ -193,7 +205,7 @@ export const brandItems: SidebarItem[] = [
       {
         key: "tasks",
         href: "/settings",
-        icon: "solar:settings-outline",
+        icon: "fluent-color:settings-28",
         title: "Settings",
         endContent: (
           <Icon
@@ -318,7 +330,7 @@ export const sectionNestedItems: SidebarItem[] = [
   {
     key: "tasks",
     href: "/settings",
-    icon: "solar:settings-outline",
+    icon: "fluent-color:settings-28",
     title: "Settings",
     endContent: (
       <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
