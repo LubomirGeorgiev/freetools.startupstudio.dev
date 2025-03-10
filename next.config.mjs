@@ -16,7 +16,19 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: process.env.SKIP_LINTER === 'true'
-  }
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.startupstudio.dev',
+      },
+    ],
+  },
 };
 
 export default process.env.ANALYZE === 'true'

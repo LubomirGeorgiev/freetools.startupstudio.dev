@@ -1,10 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
 import Link from "next/link"
-import { ChevronRight } from "lucide-react"
 import { tools } from "@/app/data"
+import { Icon } from "@iconify/react"
 
 // Get the last 3 tools from the tools array
 const lastThreeTools = tools.slice(-3);
@@ -13,9 +12,9 @@ const lastThreeTools = tools.slice(-3);
 const carouselItems = lastThreeTools.map((tool, index) => ({
   id: tool.id,
   title: tool.name,
-  subtitle: tool.category,
+  subtitle: tool.industries[0],
   cta: "Try Now",
-  image: tool.imageUrl,
+  icon: tool.icon,
   bgColor: [
     "bg-blue-100 dark:bg-blue-950",
     "bg-amber-100 dark:bg-amber-950",
@@ -68,7 +67,7 @@ export default function HeroCarousel() {
                 href="/tools"
                 className="inline-flex items-center justify-center bg-blue-500 hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800 text-white px-6 py-3 rounded-md w-max transition-colors"
               >
-                Explore Tools <ChevronRight className="h-4 w-4 ml-1" />
+                Explore Tools <Icon icon="lucide:arrow-right" className="h-4 w-4 ml-1" />
               </Link>
             </div>
           </div>
@@ -88,11 +87,11 @@ export default function HeroCarousel() {
                     <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">{item.subtitle}</h3>
                     <p className="text-gray-600 dark:text-gray-300 mb-4">{item.description}</p>
                     <Link href={`/tools/${item.slug}`} className={`inline-flex items-center ${item.ctaColor} hover:underline`}>
-                      {item.cta} <ChevronRight className="h-4 w-4 ml-1" />
+                      {item.cta} <Icon icon="lucide:arrow-right" className="h-4 w-4 ml-1" />
                     </Link>
                   </div>
                   <div className="relative h-40 w-40">
-                    <Image src={item.image} alt={item.title} fill className="object-contain rounded-2xl" />
+                    <Icon icon={item.icon} className="text-7xl" />
                   </div>
                 </div>
               </div>
@@ -117,14 +116,14 @@ export default function HeroCarousel() {
             className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 dark:bg-gray-800/80 rounded-full p-2 shadow-md hover:bg-white dark:hover:bg-gray-800"
             aria-label="Previous slide"
           >
-            <ChevronRight className="h-5 w-5 transform rotate-180" />
+            <Icon icon="lucide:arrow-left" className="h-5 w-5 transform rotate-180" />
           </button>
           <button
             onClick={nextSlide}
             className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/80 dark:bg-gray-800/80 rounded-full p-2 shadow-md hover:bg-white dark:hover:bg-gray-800"
             aria-label="Next slide"
           >
-            <ChevronRight className="h-5 w-5" />
+            <Icon icon="lucide:arrow-right" className="h-5 w-5" />
           </button>
         </div>
       </div>

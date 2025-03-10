@@ -13,6 +13,7 @@ import { getSessionFromCookie } from "@/utils/auth";
 import { getConfig } from "@/flags";
 
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

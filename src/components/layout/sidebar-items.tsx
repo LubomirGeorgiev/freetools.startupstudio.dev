@@ -16,6 +16,18 @@ export const items: SidebarItem[] = [
     title: "Home",
   },
   {
+    key: "tools",
+    href: "/tools",
+    icon: "hugeicons:ai-magic",
+    title: "Tools",
+  },
+  {
+    key: "games",
+    href: "/games",
+    icon: "solar:gamepad-outline",
+    title: "Games",
+  },
+  {
     key: "About",
     href: "/about",
     icon: "solar:widget-2-outline",
@@ -27,7 +39,7 @@ export const items: SidebarItem[] = [
   {
     key: "Settings",
     href: "/settings",
-    icon: "solar:users-group-two-rounded-outline",
+    icon: "solar:settings-outline",
     title: "Settings",
   },
 ];
@@ -44,6 +56,18 @@ export const sectionItems: SidebarItem[] = [
         title: "Home",
       },
       {
+        key: "tools",
+        href: "/tools",
+        icon: "hugeicons:ai-magic",
+        title: "Tools",
+      },
+      {
+        key: "games",
+        href: "/games",
+        icon: "solar:gamepad-outline",
+        title: "Games",
+      },
+      {
         key: "About",
         href: "/about",
         icon: "solar:widget-2-outline",
@@ -52,7 +76,7 @@ export const sectionItems: SidebarItem[] = [
       {
         key: "Settings",
         href: "/settings",
-        icon: "solar:users-group-two-rounded-outline",
+        icon: "solar:settings-outline",
         title: "Settings",
       },
     ],
@@ -108,7 +132,7 @@ export const sectionItems: SidebarItem[] = [
       {
         key: "Finance",
         href: "/finance",
-        icon: "solar:settings-outline",
+        icon: "ep:tools",
         title: "Finance",
         endContent: (
           <Chip size="sm" variant="flat">
@@ -169,7 +193,7 @@ export const brandItems: SidebarItem[] = [
       {
         key: "tasks",
         href: "/settings",
-        icon: "solar:checklist-minimalistic-outline",
+        icon: "solar:settings-outline",
         title: "Settings",
         endContent: (
           <Icon
@@ -294,7 +318,7 @@ export const sectionNestedItems: SidebarItem[] = [
   {
     key: "tasks",
     href: "/settings",
-    icon: "solar:checklist-minimalistic-outline",
+    icon: "solar:settings-outline",
     title: "Settings",
     endContent: (
       <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />

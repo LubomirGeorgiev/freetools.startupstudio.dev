@@ -3,7 +3,6 @@ export interface Industry {
   slug: string;
   name: string;
   description: string;
-  icon: string;
   count: number;
 }
 
@@ -13,7 +12,7 @@ export interface Tool {
   name: string;
   description: string;
   industries: string[];
-  imageUrl: string;
+  icon: string;
 }
 
 export interface Game {
@@ -21,8 +20,8 @@ export interface Game {
   slug: string;
   name: string;
   description: string;
-  imageUrl: string;
   tags: string[];
+  icon: string;
 }
 
 export const industries: Industry[] = [
@@ -31,7 +30,6 @@ export const industries: Industry[] = [
     slug: "/marketing",
     name: "Marketing",
     description: "Marketing",
-    icon: "solar:pie-chart-2-outline",
     count: 1,
   },
   {
@@ -39,7 +37,6 @@ export const industries: Industry[] = [
     slug: "/legal",
     name: "Legal",
     description: "Legal",
-    icon: "solar:chart-outline",
     count: 1,
   },
   {
@@ -47,7 +44,6 @@ export const industries: Industry[] = [
     slug: "/e-commerce",
     name: "E-commerce",
     description: "E-commerce",
-    icon: "solar:gift-linear",
     count: 3,
   },
   {
@@ -55,7 +51,6 @@ export const industries: Industry[] = [
     slug: "/healthcare",
     name: "Healthcare",
     description: "Healthcare",
-    icon: "solar:bill-list-outline",
     count: 2,
   },
   {
@@ -63,7 +58,6 @@ export const industries: Industry[] = [
     slug: "/finance",
     name: "Finance",
     description: "Finance",
-    icon: "solar:settings-outline",
     count: 1,
   },
 ];
@@ -74,16 +68,16 @@ export const games: Game[] = [
     slug: "tetris",
     name: "Tetris",
     description: "A classic block-stacking puzzle game where you arrange falling tetrominoes to create complete lines.",
-    imageUrl: "/games/tetris.jpg",
     tags: ["puzzle", "classic", "arcade"],
+    icon: "fluent:tetris-app-20-regular",
   },
   {
     id: "2",
     slug: "snake",
     name: "Snake",
     description: "Control a growing snake as you collect food and avoid collisions with walls and yourself.",
-    imageUrl: "/games/retro-snake.png",
     tags: ["arcade", "classic", "strategy"],
+    icon: "game-icons:snake",
   },
 ];
 
@@ -94,7 +88,7 @@ export const tools: Tool[] = [
     name: "Audio Summarizer",
     industries: ["Legal"],
     description: "Upload your audio and get a summary of the content.",
-    imageUrl: "/image.jpg",
+    icon: "streamline:ai-settings-spark-solid",
   },
   {
     id: "2",
@@ -102,7 +96,7 @@ export const tools: Tool[] = [
     name: "Post Generator",
     industries: ["Marketing"],
     description: "Enter your idea and create, update or generate a post for your social media.",
-    imageUrl: "/image.jpg",
+    icon: "streamline:ai-generate-variation-spark-solid",
   },
   {
     id: "3",
@@ -110,8 +104,6 @@ export const tools: Tool[] = [
     name: "Image to Text",
     industries: ["Graphic Design"],
     description: "Convert images to text with AI-powered tools to improve quality and resolution.",
-    imageUrl: "/image.jpg",
+    icon: "hugeicons:ai-brain-03",
   },
 ];
-
-
