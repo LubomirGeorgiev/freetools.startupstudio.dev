@@ -5,18 +5,14 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { industries, tools } from "@/app/data";
 import ToolCard from "@/components/tool-card";
 
-interface IndustryPageProps {
-  params: {
-    slug: string;
-  };
-}
+type Props = {
+  params: Promise<{ slug: string }>;
+};
 
-export async function generateMetadata({ params }: IndustryPageProps): Promise<Metadata> {
-  // Remove the leading slash if present
-  const normalizedSlug = params.slug.startsWith("/") ? params.slug.substring(1) : params.slug;
-
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
   // Find the industry by slug
-  const industry = industries.find((i) => i.slug === `/${normalizedSlug}` || i.slug === normalizedSlug);
+  const industry = industries.find((i) => i.slug === `/${slug}`);
 
   if (!industry) {
     return {
@@ -31,12 +27,10 @@ export async function generateMetadata({ params }: IndustryPageProps): Promise<M
   };
 }
 
-export default function IndustryPage({ params }: IndustryPageProps) {
-  // Remove the leading slash if present
-  const normalizedSlug = params.slug.startsWith("/") ? params.slug.substring(1) : params.slug;
-
+export default async function IndustryPage({ params }: Props) {
+  const { slug } = await params;
   // Find the industry by slug
-  const industry = industries.find((i) => i.slug === `/${normalizedSlug}` || i.slug === normalizedSlug);
+  const industry = industries.find((i) => i.slug === `/${slug}`);
 
   if (!industry) {
     notFound();

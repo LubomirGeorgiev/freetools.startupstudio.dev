@@ -70,7 +70,7 @@ export default function About() {
                 <div className="relative">
                   <Image
                     alt=''
-                    src="https://media.startupstudio.dev/images/free-tools-and-games-about-page-2.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+                    src="https://media.startupstudio.dev/images/free-tools-and-games-about-page-1.jpg"
                     width={396}
                     height={528}
                     className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -82,7 +82,7 @@ export default function About() {
                 <div className="relative">
                   <Image
                     alt=""
-                    src="https://media.startupstudio.dev/images/free-tools-and-games-about-page-2.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+                    src="https://media.startupstudio.dev/images/free-tools-and-games-about-page-2.jpg"
                     width={396}
                     height={528}
                     className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -92,7 +92,7 @@ export default function About() {
                 <div className="relative">
                   <Image
                     alt=""
-                    src="https://media.startupstudio.dev/images/free-tools-and-games-about-page-2.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+                    src="https://media.startupstudio.dev/images/free-tools-and-games-about-page-3.jpg"
                     width={396}
                     height={528}
                     className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -104,7 +104,7 @@ export default function About() {
                 <div className="relative">
                   <Image
                     alt=""
-                    src="https://media.startupstudio.dev/images/free-tools-and-games-about-page-2.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+                    src="https://media.startupstudio.dev/images/free-tools-and-games-about-page-4.jpg"
                     width={400}
                     height={528}
                     className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -114,7 +114,7 @@ export default function About() {
                 <div className="relative">
                   <Image
                     alt=""
-                    src="https://media.startupstudio.dev/images/free-tools-and-games-about-page-2.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+                    src="https://media.startupstudio.dev/images/free-tools-and-games-about-page-5.jpg"
                     width={396}
                     height={528}
                     className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -159,7 +159,7 @@ export default function About() {
           width={2832}
           height={1416}
           alt=""
-          src="https://media.startupstudio.dev/images/free-tools-and-games-about-page-1.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80"
+          src="https://media.startupstudio.dev/images/free-tools-and-games-about-page-5.jpg"
           className="aspect-[5/2] w-full object-cover xl:rounded-3xl"
         />
       </div>

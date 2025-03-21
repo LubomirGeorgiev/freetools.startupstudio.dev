@@ -10,12 +10,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, GamepadIcon } from "lucide-react";
 
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
 export async function generateMetadata({
   params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const game = getGameBySlug(params.slug);
+}: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const game = getGameBySlug(slug);
 
   if (!game) {
     return {
@@ -31,9 +34,7 @@ export async function generateMetadata({
 
 export default async function GameDetailPage({
   params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+}: Props) {
   const { slug } = await params;
   const game = getGameBySlug(slug);
 
