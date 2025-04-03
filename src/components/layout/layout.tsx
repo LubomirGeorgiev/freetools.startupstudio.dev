@@ -10,6 +10,7 @@ import { sectionItemsWithTeams } from "./sidebar-items";
 import SidebarDrawer from "./sidebar-drawer";
 import Sidebar from "./sidebar";
 import { NavUser } from "../nav-user";
+import { SidebarProvider } from "@/components/ui/sidebar";
 /**
  * 💡 TIP: You can use the usePathname hook from Next.js App Router to get the current pathname
  * and use it as the active key for the Sidebar component.
@@ -62,7 +63,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Spacer y={8} />
       <div className="mt-auto flex flex-col">
         <NavUser />
-
       </div>
     </div>
   ), [currentPath]);
@@ -74,7 +74,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         isOpen={isOpen}
         onOpenChange={onOpenChange}
       >
-        {sidebarContent}
+        <SidebarProvider>
+          {sidebarContent}
+        </SidebarProvider>
       </SidebarDrawer>
       <div className="flex flex-1 flex-col p-4 overflow-hidden">
         <header className="flex h-16 items-center gap-2 rounded-medium border-small border-divider px-4 mb-4">

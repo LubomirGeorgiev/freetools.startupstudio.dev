@@ -8,7 +8,8 @@
     "main": ".open-next/worker.js",
     "compatibility_date": "2024-09-26",
     "compatibility_flags": [
-      "nodejs_compat"
+      "nodejs_compat",
+      "nodejs_compat_populate_process_env"
     ],
     // Minification helps to keep the Worker bundle size down and improve start up time.
     "minify": true,
@@ -39,7 +40,7 @@
     "vars": {
         "EMAIL_FROM": "hello@saas-stack.startup-studio.dev",
         "EMAIL_FROM_NAME": "Startup Studio",
-        "EMAIL_REPLY_TO": "startupstudio.dev@gmail.com"
+        "EMAIL_REPLY_TO": "info@startupstudio.dev"
     },
     /**
      * Note: Use secrets to store sensitive data.
@@ -50,11 +51,16 @@
      * Service Bindings (communicate between multiple Workers)
      * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
      */
-    // "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]
+     "services": [
+      {
+        "binding": "NEXT_CACHE_REVALIDATION_WORKER",
+        "service": "cloudflare-workers-nextjs-saas-template"
+      }
+    ],
 
     "d1_databases": [
         {
-            "binding": "DATABASE",
+            "binding": "NEXT_CACHE_D1",
             "database_name": "freetools-startupstudio-dev",
             "database_id": "3473ea63-c4a1-422c-8c3e-0df451573a7c",
             "migrations_dir": "src/db/migrations"

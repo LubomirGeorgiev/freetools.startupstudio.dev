@@ -11,7 +11,9 @@ import {
   Map,
   PieChart,
   Settings2,
+  ShoppingCart,
   SquareTerminal,
+  CreditCard,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -24,8 +26,8 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  SidebarProvider,
 } from "@/components/ui/sidebar"
-import { useSessionStore } from "@/state/session"
 
 export type NavItem = {
   title: string
@@ -97,6 +99,16 @@ const data: Data = {
       // ],
     },
     {
+      title: "Marketplace",
+      url: "/dashboard/marketplace",
+      icon: ShoppingCart,
+    },
+    {
+      title: "Billing",
+      url: "/dashboard/billing",
+      icon: CreditCard,
+    },
+    {
       title: "Settings",
       url: "/settings",
       icon: Settings2,
@@ -141,25 +153,21 @@ const data: Data = {
 
 // TODO Add a theme switcher
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { session } = useSessionStore()
-
   return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
-      </SidebarHeader>
-      <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
-      </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={{
-          name: session?.user?.firstName || "",
-          email: session?.user?.email || "",
-          avatar: session?.user?.avatar || "https://avatar.iran.liara.run/public"
-        }} />
-      </SidebarFooter>
-      <SidebarRail />
-    </Sidebar>
+    <SidebarProvider>
+      <Sidebar collapsible="icon" {...props}>
+        <SidebarHeader>
+          <TeamSwitcher teams={data.teams} />
+        </SidebarHeader>
+        <SidebarContent>
+          <NavMain items={data.navMain} />
+          <NavProjects projects={data.projects} />
+        </SidebarContent>
+        <SidebarFooter>
+          <NavUser />
+        </SidebarFooter>
+        <SidebarRail />
+      </Sidebar>
+    </SidebarProvider>
   )
 }

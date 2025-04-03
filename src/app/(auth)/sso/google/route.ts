@@ -2,7 +2,7 @@ import { getSessionFromCookie } from "@/utils/auth";
 import { withRateLimit, RATE_LIMITS } from "@/utils/with-rate-limit";
 import { redirect } from "next/navigation";
 import { generateState, generateCodeVerifier } from "arctic";
-import google from "@/lib/sso/google-sso";
+import { getGoogleSSOClient } from "@/lib/sso/google-sso";
 import { cookies } from "next/headers";
 import {
   GOOGLE_OAUTH_STATE_COOKIE_NAME,
@@ -12,7 +12,7 @@ import isProd from "@/utils/is-prod";
 import ms from "ms";
 import type { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { isGoogleSSOEnabled } from "@/flags";
-
+import { REDIRECT_AFTER_SIGN_IN } from "@/constants";
 const cookieOptions: Partial<ResponseCookie> = {
   path: "/",
   httpOnly: true,
@@ -31,7 +31,7 @@ export async function GET() {
     const session = await getSessionFromCookie()
 
     if (session) {
-      return redirect('/')
+      return redirect(REDIRECT_AFTER_SIGN_IN)
     }
 
     let ssoRedirectUrl: null | URL = null
@@ -39,6 +39,8 @@ export async function GET() {
     try {
       const state = generateState();
       const codeVerifier = generateCodeVerifier();
+
+      const google = getGoogleSSOClient();
 
       ssoRedirectUrl = google.createAuthorizationURL(state, codeVerifier, ["openid", "profile", "email"]);
 

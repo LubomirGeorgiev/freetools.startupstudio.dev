@@ -66,6 +66,15 @@ Have a look at the [project plan](./cursor-docs/project-plan.md) to get an overv
   - ✨ Beautiful Email Templates
   - 👤 Profile Settings Page
   - 🎯 Form Validation States
+- 💳 Credit Billing System
+  - 💰 Credit-based Pricing Model
+  - 🔄 Monthly Credit Refresh
+  - 📊 Credit Usage Tracking
+  - 💳 Stripe Payment Integration
+  - 📜 Transaction History
+  - 📦 Credit Package Management
+  - 💸 Pay-as-you-go Model
+  - 📈 Usage Analytics
 - ✨ Validations with Zod and React Hook Form
   - 🛡️ Type-safe Form Validations
   - 🔒 Server-side Validations
@@ -130,10 +139,10 @@ After making a change to wrangler.jsonc, you need to run `pnpm cf-typegen` to ge
 ## Deploying to Cloudflare with Github Actions
 
 1. Create D1 and KV namespaces
-2. Set either `RESEND_API_KEY` or `SENDGRID_API_KEY` as a secret in your Cloudflare Worker depending on which email service you want to use.
+2. Set either `RESEND_API_KEY` or `BREVO_API_KEY` as a secret in your Cloudflare Worker depending on which email service you want to use.
 3. Create a Turnstile catcha in your Cloudflare account, and set the `NEXT_PUBLIC_TURNSTILE_SITE_KEY` as a Github Actions variable.
 4. Set `TURNSTILE_SECRET_KEY` as a secret in your Cloudflare Worker.
-5. Update the `wrangler.jsonc` file with the new database and KV namespaces and env variables.
+5. Update the `wrangler.jsonc` file with the new database and KV namespaces and env variables. Search for "cloudflare-workers-nextjs-saas-template" recursively in the whole repository and change that to the name of your project. Don't forget that the name you choose at the top of the wrangler.jsonc should be the same as `services->[0]->service` in the same file.
 6. Go to https://dash.cloudflare.com/profile/api-tokens and click on "Use template" next to "Edit Cloudflare Workers". On the next, page add the following permissions in addition to the ones from the template:
     - Account:AI Gateway:Edit
     - Account:Workers AI:Edit
@@ -159,4 +168,4 @@ If you want to preview and edit the email templates you can:
 ### How to upgrade this template
 Since this template is based on the [OpenNext](https://opennext.js.org/cloudflare) framework we need to make sure that we are following the changes they are making and update this template accordingly.
 
-To see the changes clone https://github.com/cloudflare/workers-sdk and then do `git diff dba3f2158...main -- packages/create-cloudflare/templates-experimental/next/` you will see the changes that we need to make to this template.
+To see the changes clone https://github.com/cloudflare/workers-sdk and then do `git diff 869ec7b...main -- packages/create-cloudflare/templates-experimental/next/` you will see the changes that we need to make to this template.

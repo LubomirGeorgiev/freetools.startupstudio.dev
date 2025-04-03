@@ -1,4 +1,4 @@
-# Next.js + Cloudflare Workers SaaS Project Plan
+# Next.js + Cloudflare Workers SaaS Template Project Plan
 
 ## Tech Stack Overview
 
@@ -169,13 +169,12 @@
   - [x] Fixed linter errors and improved content
 
 ### Phase 4: Billing & Subscriptions
-
-- [ ] Stripe integration
-- [ ] Subscription plans
-- [ ] Usage tracking
-- [ ] Billing dashboard
-- [ ] Payment processing
-- [ ] Webhook handling
+- [x] Credit-based billing
+- [x] Credit packages and pricing
+- [x] Credit usage tracking
+- [x] Transaction history
+- [x] Monthly credit refresh
+- [x] Stripe payment processing
 
 ### Phase 5: Advanced Features
 
@@ -209,13 +208,15 @@
 - [ ] Resource management
 - [ ] File uploads
 - [ ] API access
+- [ ] Component marketplace with credit system
 
 ### Billing & Subscriptions
-
-- [ ] Multiple pricing tiers
-- [ ] Usage-based billing
-- [ ] Subscription management
-- [ ] Payment processing
+- [x] Credit-based billing
+- [x] Credit packages and pricing
+- [x] Credit usage tracking
+- [x] Transaction history
+- [x] Monthly credit refresh
+- [x] Stripe payment processing
 
 ### Developer Experience
 
@@ -234,6 +235,28 @@
 - [x] Asset optimization
 - [x] Edge caching strategy
 - [x] Suspense for async operations to improve initial page load
+
+### Credit Billing System
+- [x] Credit-based Pricing Model
+  - [x] Flexible credit packages with different tiers
+  - [x] Monthly credit allocation and refresh
+  - [x] Pay-as-you-go pricing structure
+  - [x] Credit expiration management
+- [x] Transaction Management
+  - [x] Secure payment processing with Stripe
+  - [x] Detailed transaction history
+  - [x] Credit usage tracking per feature
+  - [x] Automated billing notifications
+- [x] Credit Usage System
+  - [x] Real-time credit balance tracking
+  - [x] Usage analytics and reporting
+  - [x] Credit deduction for feature usage
+  - [x] Low credit balance alerts
+- [x] Admin Controls
+  - [x] Credit package management
+  - [x] Manual credit adjustments
+  - [x] Usage monitoring tools
+  - [x] Billing dispute handling
 
 ### Security
 
@@ -256,6 +279,8 @@
 - [ ] Error tracking
 - [ ] Performance monitoring
 - [ ] User analytics
+- [ ] Credit usage metrics
+- [ ] Transaction monitoring
 - [ ] Usage metrics
 
 ## Launch Checklist
@@ -331,6 +356,8 @@ Current Implementation:
   - User settings management with validation
   - Email verification flow
   - Rate limiting for auth endpoints
+- Credit and transaction tables
+- Resource tables
 
 ### Project Structure Updates
 
