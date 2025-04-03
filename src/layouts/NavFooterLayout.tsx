@@ -12,7 +12,7 @@ export default async function NavFooterLayout({
     <div className="min-h-screen flex flex-col">
       <Layout>
         {children}
-      </main>
+      </Layout>
       {renderFooter && <Footer />}
     </div>
   );
